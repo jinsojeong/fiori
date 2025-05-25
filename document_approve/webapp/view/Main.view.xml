@@ -1,0 +1,94 @@
+<mvc:View controllerName="sync.ca.fi.documentapprove.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+
+    
+    <Page id="page" title="{i18n>title}">
+        <!--데이터 Read 구현-->
+        <t:Table
+            rows="{/DocumentSet}" 
+            class="sapUiSmallMargin"
+        >
+            <t:extension>
+                <Title text="{i18n>titleTable}" />
+            </t:extension>
+            <t:columns>
+                <!-- Bukrs : 회사코드 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnCarrid}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Bukrs}"></Text>
+                    </t:template>
+                </t:Column>
+
+                <!-- Belnr : 전표번호 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnBelnr}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Belnr}"></Text>
+                    </t:template>
+                </t:Column>
+
+                <!-- Gjahr : 회계연도 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnGjahr}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Gjahr}"></Text>
+                    </t:template>
+                </t:Column>
+
+                <!-- Bltxt : 전표 헤더 텍스트 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnBltxt}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Bltxt}"></Text>
+                    </t:template>
+                </t:Column>
+
+                <!-- Recipient : 상신자 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnRecipient}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Recipient}"></Text>
+                    </t:template>
+                </t:Column>
+
+                <!-- RecDate : 상신일자 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnRecDate}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <Text text="{path: 'Recdate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'yyyy.MM.dd'}}" />
+                    </t:template>
+                </t:Column>
+
+                 <!-- AppStatus : 결제 상태 -->
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnAppStatus}" class="highlightHeader"></Text>
+                    </t:label>
+                    <t:template>
+                        <ObjectStatus
+                            icon = "{path: 'Appstatus', formatter: '.formatter.formatStatusIcon'}"
+                            state = "{path: 'Appstatus', formatter: '.formatter.formatStatusState'}"
+                            text="{path: 'Appstatus', formatter: '.formatter.formatStatusText'}" />
+                    </t:template>
+                </t:Column>
+
+            </t:columns>
+        </t:Table>
+
+    </Page>
+</mvc:View>

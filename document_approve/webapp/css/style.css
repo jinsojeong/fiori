@@ -1,0 +1,7 @@
+/* Enter your custom styles here */
+.highlightHeader {
+    background-color: #eaf4ff !important;
+    font-weight: bold !important;
+    border-bottom: 1px solid #000;
+    display: inline-block; 배경색이 텍스트 전체에 적용되도록
+}

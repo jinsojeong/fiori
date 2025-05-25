@@ -1,0 +1,85 @@
+<mvc:View controllerName="sync.ca.fi.salesreport.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+
+    <!--데이터 Read 구현부-->
+    <t:Table 
+        rows="{/ZCA_CDS_V_002}"
+        class="sapUiSmallMargin"
+    >
+        <t:extension>
+            <Title text="{i18n>titleTable }" />
+        </t:extension>
+        <t:columns>
+            <!--전표 번호-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnBelnr}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Belnr}"></Text>
+                </t:template>
+            </t:Column>
+
+            <!--회계연도-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnGjahr}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Gjahr}"></Text>
+                </t:template>
+            </t:Column>
+
+            <!--고객코드-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnBpcode}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Bpcode}"></Text>
+                </t:template>
+            </t:Column>
+
+            <!--참조문서-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnXblnr}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Xblnr}"></Text>
+                </t:template>
+            </t:Column>
+
+            <!--총액-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnSumamount}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Sumamount}"></Text>
+                </t:template>
+            </t:Column>
+
+            <!--통화코드-->
+            <t:Column>
+                <t:label>
+                    <Text text="{i18n>columnWaers}"></Text>
+                </t:label>
+                <t:template>
+                    <Text text="{Waers}"></Text>
+                </t:template>
+            </t:Column>
+        </t:columns>
+    
+    
+    </t:Table>
+
+
+
+
+
+    </Page>
+</mvc:View>

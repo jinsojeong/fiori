@@ -1,0 +1,78 @@
+<mvc:View xmlns:smartList="sap.ui.comp.smartlist"
+    controllerName="sync.ca.fi.documentapp.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    height="100%" width="100%">
+
+    <Page id="page" title="{i18n>title}">
+
+        <IconTabBar 
+            id="idIconTabBar"
+            select=".onFilterSelect"
+            class="sapUiResponsiveContentPadding">
+            <items>
+                <IconTabFilter icon="sap-icon://attachment-video" iconColor="Default" text="All" key="All" />
+                <IconTabSeparator />
+                <IconTabFilter icon="sap-icon://bbyd-active-sales" iconColor="Critical" text="상신건" key="S" />
+                <IconTabFilter icon="sap-icon://accept" iconColor="Positive" text="승인건" key="A" />
+                <IconTabFilter icon="sap-icon://decline" iconColor="Negative" text="반려건" key="R" />
+            </items>    
+        </IconTabBar>
+
+        <smartList:SmartList
+            id="DocumentSmartList"
+            entitySet="ZCA_CDS_V_005"
+            header="{i18n>titleList}"
+            enableAutoBinding="true"
+            showRowCount="false"
+            showFullScreenButton="true"
+            selectFields="Belnr,Bltxt,Gjahr,Bukrs,Recipient,RecDate,AppStatus">
+
+            <smartList:listItemTemplate>
+                <Toolbar>
+
+                    <ToolbarSpacer/>
+                </Toolbar>
+                <CustomListItem type="Active" press=".onItemPress">
+                    <HBox justifyContent="SpaceBetween" alignItems="Start" class="sapUiSmallMargin">
+                        <!-- 왼쪽: 전표 정보 -->
+                        <VBox>
+                            <!-- 전표번호 줄 -->
+                            <HBox>
+                                <ObjectIdentifier
+                                    title="{i18n>columnBelnr}{Belnr}"
+                                    text="{Bltxt}" />
+                            </HBox>
+                            
+                            <!-- 전표 텍스트 + 연도 + 회사코드 -->
+                            <HBox wrap="Wrap" >
+                                <Text text="{i18n>columnGjahr}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{Gjahr}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{i18n>columnBukrs}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{Bukrs}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                            </HBox>
+                            
+                            <!-- 상신자 + 상신일자 -->
+                            <HBox wrap="Wrap">
+                                <Text text="{i18n>columnRecipient}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{Recipient}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{i18n>columnRecDate}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                                <Text text="{path: 'RecDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'yyyy.MM.dd' }}" class="textSubtleSmall sapUiTinyMarginEnd" />
+                            </HBox>
+                        </VBox>
+
+                        <!-- 오른쪽: 상태 아이콘 -->
+                        <ObjectStatus
+                            
+                            icon="{path: 'AppStatus', formatter: '.formatter.formatStatusIcon'}"
+                            state="{path: 'AppStatus', formatter: '.formatter.formatStatusState'}"
+                            text="{path: 'AppStatus', formatter: '.formatter.formatStatusText'}"
+                            class="sapUiTinyMarginTop sapUiSmallMarginEnd"
+                        />
+
+                    </HBox>
+                </CustomListItem>
+            </smartList:listItemTemplate>
+        </smartList:SmartList>
+    </Page>
+</mvc:View>

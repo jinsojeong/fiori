@@ -1,7 +1,10 @@
-<mvc:View controllerName="sync.ca.fi.documentapp.controller.App"
-    displayBlock="true"
+<mvc:View
+    controllerName="sync.ca.fi.documentapp.controller.App"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+    
     <App id="app">
+        <f:FlexibleColumnLayout id="fcl" autoFocus="true"/>
     </App>
 </mvc:View>

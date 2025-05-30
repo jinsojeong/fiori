@@ -1,0 +1,23 @@
+<mvc:View
+    controllerName="sync.ca.fi.documentapp.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    displayBlock="true">
+    
+    <Page title="전표 상세">
+
+        <form:SimpleForm editable="false" layout="ResponsiveGridLayout">
+            <form:content>
+                <Label text="전표번호" />
+                <Text text="{Belnr}" />
+                <Label text="텍스트" />
+                <Text text="{Bltxt}" />
+                <Label text="회사코드" />
+                <Text text="{Bukrs}" />
+                <Label text="회계연도" />
+                <Text text="{Gjahr}" />
+            </form:content>
+        </form:SimpleForm>
+    </Page>
+</mvc:View>

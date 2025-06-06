@@ -1,4 +1,4 @@
-# fiori🍀
+# Fiori
 
 ---
 
